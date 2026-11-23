@@ -1,0 +1,19 @@
+{
+  "name": "lensnote",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SonamSherap10/LensNote.git"
+  },
+  "author": "Sonam Sherpa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SonamSherap10/LensNote/issues"
+  },
+  "homepage": "https://github.com/SonamSherap10/LensNote#readme",
+  "description": ""
+}
