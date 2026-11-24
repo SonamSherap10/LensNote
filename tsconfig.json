@@ -1,44 +1,29 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+    // ---------- File layout ----------
+    "rootDir": "./src",                      // Your source code lives in src/, so compiled output mirrors that structure
+    "outDir": "./dist",                      // `tsc` writes compiled .js files here instead of next to your .ts files
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",
-    "target": "es2022",
-    "types": ["node"],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    // ---------- Environment ----------
+    "module": "commonjs",                    // Compile import/export to require/module.exports (matches Node's default with no "type" in package.json)
+    "target": "es2022",                      // Output modern JS; Node 20 supports it natively (async/await, classes, etc.)
+    "types": ["node"],                       // Only auto-load Node's global types (process, Buffer...); needs `npm i -D @types/node`
+    "esModuleInterop": true,                 // Lets `import express from "express"` work with CommonJS packages
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    // ---------- Outputs ----------
+    "sourceMap": true,                       // Generates .map files so error stack traces point to your .ts lines
 
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    // ---------- Type checking ----------
+    "strict": true,                          // Turns on all strict checks (null checks, no implicit any, etc.)
+    "noUncheckedIndexedAccess": true,        // arr[0] and obj[key] are typed `T | undefined`, forcing you to handle missing values
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    // ---------- Compatibility / safety ----------
+    "isolatedModules": true,                 // Ensures each file can be compiled alone, which is how tsx/esbuild work
+    "verbatimModuleSyntax": false,           // Don't force `import type` everywhere (keeps imports simpler for now)
+    "noUncheckedSideEffectImports": true,    // Errors if a side-effect import like `import "dotenv/config"` can't be resolved
+    "moduleDetection": "force",              // Treats every file as a module, avoiding accidental global-scope variable clashes
+    "skipLibCheck": true                     // Skips type-checking inside node_modules .d.ts files (faster, fewer false errors)
+  },
 
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": false,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-  }
+  "include": ["src"]                         // Only compile/check files inside src/
 }

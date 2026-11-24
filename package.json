@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev":"tsx watch index.ts",
+    "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "npm start"
+    "test": "npm start",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,6 @@
     "express": "^5.3.0",
     "express-rate-limit": "^8.7.5",
     "multer": "^2.5.0",
-    "nodemon": "^3.1.14",
     "zod": "^4.6.7"
   },
   "devDependencies": {
